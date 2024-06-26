@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <title>Vue To-Do List</title>
+   <!-- Bootstrap CSS -->
+
+   <link rel="stylesheet" href="css/style.css">
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+   <div id="app" class="container mt-5">
+      <div class="logo d-flex justify-content-center">
+         <img :src="logo" alt="">
+      </div>
+
+      <h1 class="text-center">Vue To-Do List</h1>
+
+      <div class="card">
+         <div class="card-body">
+            <form @submit.prevent="addTask">
+               <div class="input-group mb-3">
+                  <input type="text" v-model="newTask" class="form-control" placeholder="Inserisci un nuovo task">
+                  <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">Aggiungi</button>
+                  </div>
+               </div>
+            </form>
+            <ul class="list-group">
+               <li v-for="(task, index) in tasks" :key="index" class="list-group-item d-flex justify-content-between align-items-center">
+                  {{ task }}
+                  <button class="btn btn-danger btn-sm" @click="removeTask(index)">Elimina</button>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+
+   <!-- Vue.js -->
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+   <script type="text/javascript" src="js/main.js"></script>
+
+   <!-- Bootstrap and jQuery JS -->
+   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
