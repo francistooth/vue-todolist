@@ -4,15 +4,25 @@ createApp({
    data() {
       return {
          newTask: '',
-         tasks: [],
+         tasks: [
+            {
+               text: 'lavare i piatti',
+               done: false
+            },
+            {
+               text: 'idratati',
+               done: true
+            }
+         ],
          logo: 'img/logo.png'
       }
    },
    methods: {
       addTask() {
          if (this.newTask.trim()) {
-            this.tasks.push(this.newTask.trim());
+            this.tasks.unshift({text: this.newTask.trim(), done:false});
             this.newTask = '';
+            this.inputError = false;
          }
       },
       removeTask(index) {

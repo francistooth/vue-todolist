@@ -28,12 +28,14 @@
                   </div>
                </div>
             </form>
-            <ul class="list-group">
-               <li v-for="(task, index) in tasks" :key="index" class="list-group-item d-flex justify-content-between align-items-center">
-                  {{ task }}
+            <ul class="list-group" v-if="tasks.length >= 1">
+               <li @click="task.done = !task.done" v-for="(task, index) in tasks" :key="index" class="list-group-item d-flex justify-content-between align-items-center">
+                  {{ task.text }}
                   <button class="btn btn-danger btn-sm" @click="removeTask(index)">Elimina</button>
                </li>
             </ul>
+
+            <h5 v-else class="text-center"> Non ci sono attivit&aacute; da mostrare </h5>
          </div>
       </div>
    </div>
